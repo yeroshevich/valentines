@@ -1,16 +1,13 @@
-import {headers} from "next/headers";
-import Counter from "@/components/widgets/Counter";
+import HeartsRainLayout from "@/components/layouts/HeartsRain";
+import LoveCards from "@/components/widgets/LoveCards";
+import styles from './index.module.scss'
 
 export default async function Home() {
-  const url = (await headers()).get('c-url')
   return (
-    <div>
-      <main>
-        content of{' '}
-        {url}
-
-        <Counter />
+    <HeartsRainLayout>
+      <main className={styles.main}>
+        <LoveCards />
       </main>
-    </div>
+    </HeartsRainLayout>
   );
 }

@@ -1,13 +1,24 @@
 import {create} from "zustand";
 
-export interface ICountStore{
-  count: number;
-  inc: Function;
-  dec: Function;
+interface IAppStoreFields{
+  heartsSize: number;
+  // in pixels per second
+  heartsSpeed: number;
+  shakeLevel: number;
 }
 
-export const counterStore = create<ICountStore>((set) => ({
-  count: 0,
-  inc: () => set((state) => ({ count: state.count + 1 })),
-  dec: () => set((state) => ({ count: state.count - 1})),
+export interface IAppStore extends IAppStoreFields{
+  increaseState: (newState: Partial<IAppStoreFields>) => void;
+}
+
+export const appStore = create<IAppStore>((set) => ({
+  heartsSize: 45,
+  heartsSpeed: 5,
+  shakeLevel: 0,
+  increaseState: (newState) => set((state: IAppStore) => ({
+    ...state,
+    ...(Object.fromEntries(Object.keys(newState).map((key: string) => {
+      return [key, state[key as keyof IAppStoreFields] + Number(newState[key as keyof IAppStoreFields])];
+    }))),
+  })),
 }))

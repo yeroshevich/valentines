@@ -1,0 +1,18 @@
+
+@keyframes bounceAnimation {
+  0%,100%{
+    width: var(--bounce-from);
+    height: var(--bounce-from);
+  }
+  50%{
+    width: var(--bounce-to);
+    height: var(--bounce-to);
+  }
+}
+
+.bouncedHeart{
+  animation: infinite 3s bounceAnimation ease-in-out;
+  filter: drop-shadow(0 0 2px #ff1493)
+  drop-shadow(0 0 2px #ff69b4)
+  drop-shadow(0 0 2px #ffffff);
+}

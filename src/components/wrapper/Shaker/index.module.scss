@@ -1,0 +1,29 @@
+$shake-duration: 1s;
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease-in-out;
+
+  &.shake {
+    animation: shake $shake-duration infinite;
+  }
+}
+
+
+@keyframes shake {
+  0%   { transform: translate( calc(var(--shake-intensity) * -1px),  calc(var(--shake-intensity) * 1px)); }
+  10%  { transform: translate( calc(var(--shake-intensity) * 1px),  calc(var(--shake-intensity) * -1px)); }
+  20%  { transform: translate( calc(var(--shake-intensity) * -2px),  calc(var(--shake-intensity) * 2px)); }
+  30%  { transform: translate( calc(var(--shake-intensity) * 2px),  calc(var(--shake-intensity) * -2px)); }
+  40%  { transform: translate( calc(var(--shake-intensity) * -3px),  calc(var(--shake-intensity) * 3px)); }
+  50%  { transform: translate( calc(var(--shake-intensity) * 3px),  calc(var(--shake-intensity) * -3px)); }
+  60%  { transform: translate( calc(var(--shake-intensity) * -2px),  calc(var(--shake-intensity) * 2px)); }
+  70%  { transform: translate( calc(var(--shake-intensity) * 2px),  calc(var(--shake-intensity) * -2px)); }
+  80%  { transform: translate( calc(var(--shake-intensity) * -1px),  calc(var(--shake-intensity) * 1px)); }
+  90%  { transform: translate( calc(var(--shake-intensity) * 1px),  calc(var(--shake-intensity) * -1px)); }
+  100% { transform: translate(0, 0); }
+}

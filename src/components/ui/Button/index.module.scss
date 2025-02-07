@@ -1,0 +1,42 @@
+@keyframes hoverAnim {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.button {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #c9c9c9;
+  transition: transform 0.3s;
+  position: relative;
+  overflow: hidden;
+
+  &:not(:disabled){
+    cursor: pointer;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    background-color: #ff1493;
+    opacity: 0.2;
+    inset: 0;
+    width: 0;
+    transition: width .3s linear;
+  }
+
+  &:active {
+    transform: translateY(4px);
+  }
+
+  &:hover{
+    border-color: #ff1493;
+    &::before {
+      width: 100%;
+    }
+  }
+}
