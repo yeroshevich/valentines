@@ -1,5 +1,0 @@
-npm run test
-npm run prettier
-npm run lint:write
-npm run build
-git add

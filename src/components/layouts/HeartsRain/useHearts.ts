@@ -7,12 +7,6 @@ export const useHearts = () => {
   const [hearts, setHearts] = useState<IHeart[]>([]);
   const app = appStore();
 
-  const handleHeartsMovement = async () => {
-    setHearts(hearts.map(heart => ({
-      ...heart,
-      top: heart.top > window.outerHeight ? -100 * Math.random() : heart.top + app.heartsSpeed + Math.random(),
-    })))
-  }
 
   useEffect(() => {
     setHearts((new Array(HEART_LAYOUT_CONFIG.hearts_count).fill(0)).map(() => ({
@@ -22,8 +16,26 @@ export const useHearts = () => {
   }, [])
 
   useEffect(() => {
-    requestAnimationFrame(handleHeartsMovement);
-  }, [hearts]);
+    let animationFrameId: number;
+
+    const updateHearts = () => {
+      setHearts((prevHearts) =>
+        prevHearts.map((heart) => ({
+          ...heart,
+          top:
+            heart.top > window.innerHeight
+              ? -100 * Math.random()
+              : heart.top + app.heartsSpeed + Math.random(),
+        }))
+      );
+
+      animationFrameId = requestAnimationFrame(updateHearts);
+    };
+
+    animationFrameId = requestAnimationFrame(updateHearts);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [app.heartsSpeed]);
 
   return {
     hearts,
