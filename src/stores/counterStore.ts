@@ -13,7 +13,7 @@ export interface IAppStore extends IAppStoreFields{
 
 export const appStore = create<IAppStore>((set) => ({
   heartsSize: 45,
-  heartsSpeed: 5,
+  heartsSpeed: 10,
   shakeLevel: 0,
   increaseState: (newState) => set((state: IAppStore) => ({
     ...state,

@@ -4,6 +4,7 @@ import {LOVE_CARDS} from "@/components/widgets/LoveCards/constants";
 import CardView from "@/components/dummies/CardView";
 import {appStore} from "@/stores/counterStore";
 import BouncedHeart from "@/components/ui/BouncedHeart";
+import DuduBear from "@/components/dummies/DuduBear";
 
 const LoveCards = () => {
   const [cardIndex, setCardIndex] = React.useState<number>(0);
@@ -21,7 +22,10 @@ const LoveCards = () => {
   }
 
   if(cardIndex === LOVE_CARDS.length - 1) {
-    return <BouncedHeart from={150} to={500} />
+    return <>
+      <BouncedHeart from={150} to={500} />
+      <DuduBear />
+    </>
   }
 
   return (
