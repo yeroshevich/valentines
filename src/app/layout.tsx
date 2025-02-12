@@ -25,6 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" href="../assets/images/heart.png" type={'image/png'}/>
+        <link rel="preload" href="../assets/video/dudu.gif" type={'image/gif'}/>
+        <link rel="preload" href="../assets/video/dudu2.gif" type={'image/gif'}/>
+        <link rel="preload" href="../assets/video/dudu3.gif" type={'image/gif'}/>
+        <link rel="preload" href="../assets/video/dudu4.gif" type={'image/gif'}/>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
     </html>
   );

@@ -1,5 +1,11 @@
-import {useRef, useState} from "react";
+import {
+  useRef,
+  useState,
+} from 'react';
 
+const updateAxis = (axis: number, add = 150) => {
+  return axis <= 0 ? axis + add : axis - add;
+}
 
 export const useBearCatching = (maxStage: number) => {
   const duduRef = useRef<HTMLImageElement | null>(null);
@@ -10,11 +16,11 @@ export const useBearCatching = (maxStage: number) => {
     if((stage + 1) === maxStage) return;
     setStage(p => p + 1);
     if(duduRef?.current){
-      const top = Math.random() * (window.innerHeight - 150);
-      const left = Math.random() * (window.innerWidth - 150);
+      const top = updateAxis(Math.random() * (window.innerWidth - 300) + 150, 150);
+      const left = updateAxis(Math.random() * (window.innerWidth - 300) + 150, 150);
       duduRef.current.style.top = top + 'px';
       duduRef.current.style.left = left + 'px';
-      console.log(stage);
+
       if(messageRef?.current && stage === (maxStage - 2)){
         messageRef.current.style.display = 'flex';
         messageRef.current.style.top = (top + 25) + 'px';
